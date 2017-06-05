@@ -1,0 +1,17 @@
+<template>
+	<div id="home">
+		<h1>home</h1>
+	</div>
+</template>
+
+<script>
+export default{
+	name: 'home'
+}
+</script>
+<style>
+#home h1 {
+	font-size: .16rem;
+	color: pink;
+}
+</style>
