@@ -1,6 +1,8 @@
 <template>
 	<div id="home">
-		<h1>home</h1>
+		<div class="topbar">
+			
+		</div>
 	</div>
 </template>
 
@@ -10,8 +12,7 @@ export default{
 }
 </script>
 <style>
-#home h1 {
-	font-size: .16rem;
-	color: pink;
+#home {
+	
 }
 </style>
