@@ -1,6 +1,5 @@
 <template>
 	<div id="category_2">
-	<h2>{{ id}}</h2>
 		<div class="categroy_2_header">
 			<ul class="sort">
 				<li class="selling default">默认</li>
@@ -15,8 +14,8 @@
 						<img :src="item.SmallPic" alt="">
 					</div>
 					<div class="commodity_information">
-						<p class="commodity_name">{{ item.CommodityName}}</p>
-						<p class="money">￥{{item.CommodityPrice}}<span>{{item.Spec}}</span></p>
+						<p class="commodity_name">{{ item.CommodityName}} </p>
+						<p class="money"> ￥{{item.CommodityPrice}}<span>{{item.Spec}}</span></p>
 					</div>
 					<span class="add_cart"></span>
 				</li>
@@ -51,6 +50,7 @@ export default{
 #category_2{
 	height: 100%;
 	overflow: auto;
+	background: #fff;
 }
 .categroy_2_header{
 	position: fixed;
@@ -165,6 +165,6 @@ export default{
     line-height: .42rem;
 }
 .commodity_alone{
-	height: .70rem;
+	height: .20rem;
 }
 </style>

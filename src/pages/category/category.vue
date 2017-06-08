@@ -20,7 +20,7 @@
 					<span class="category_item_more"></span>
 				</div>
 				<div class="category_item_wrap" v-show="true">
-					<router-link to="">全部</router-link><div @click = "rotate(items)" v-for="items in item.Childs">{{items.CategoryName}}</div>
+					<a>全部</a><a @click = "rotate(items)" v-for="items in item.Childs">{{items.CategoryName}}</a>
 				</div>
 			</li>
 		<!-- 	<li class="category_item">
@@ -205,9 +205,11 @@ export default{
 }
 .category_item_wrap{
 	width: 100%;
+	overflow: hidden;
 }
 .category_item_wrap a{
 	display: inline-block;
+	/*float: left;*/
     width: 33.3%;
     padding: .07rem .15rem .07rem .14rem;
     color: #000;
