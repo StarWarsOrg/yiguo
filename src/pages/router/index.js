@@ -1,10 +1,10 @@
 //引入vue-router，并安装
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import VueAwesome from 'vue-awesome-swiper'
 //可以让VueRouter在任何组件中使用
 Vue.use(VueRouter)
-
+Vue.use(VueAwesome)
 //引入组件
 import Home from '../home/home'
 import Category from '../category/category'
