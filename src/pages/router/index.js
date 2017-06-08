@@ -7,6 +7,7 @@ Vue.use(VueRouter)
 
 //引入组件
 import Home from '../home/home'
+import CityList from '../home/citylist'
 import Category from '../category/category'
 import Eat from '../eat/eat'
 import Cart from '../cart/cart'
@@ -19,6 +20,7 @@ import Cart1 from '../cart/cart1'
 const routes = [
 	{path: '', component: Home},
 	{path: '/home', component: Home},
+	{path: '/citylist', component: CityList},
 	{path: '/category', component: Category},
 	{path: '/eat', component: Eat},
 	{path: '/cart', component: Cart},
