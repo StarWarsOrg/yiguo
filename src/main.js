@@ -12,12 +12,21 @@ import axios from 'axios'
 //添加到原型上，保证任何地方都可以访问到
 Vue.prototype.axios = axios
 
-Vue.config.productionTip = false
+// axios.get('static/data/categoryData.json')
+// .then(function (res) {
+// 	Vue.prototype.alldata =res;
+// })
+// .catch(function (error) {
+// console.log(error);
+// });
 
-/* eslint-disable no-new */
+Vue.config.productionTip = false
+// const bus = new Vue()
+ // eslint-disable no-new 
 new Vue({
   el: '#app',
   template: '<App/>',
   components: { App },
   router
 })
+

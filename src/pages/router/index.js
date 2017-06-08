@@ -23,7 +23,7 @@ const routes = [
 	{path: '/eat', component: Eat},
 	{path: '/cart', component: Cart},
 	{path: '/mine', component: Mine},
-	{path: '/category_2', component: Category_category},
+	{path: '/category_2/:id', component: Category_category},
 	{path: '/detail', component: Detail},
 	{path: '/cart1',  component: Cart1}
 ]

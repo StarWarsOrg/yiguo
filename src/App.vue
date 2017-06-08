@@ -16,6 +16,7 @@
         </router-link>
         <router-link to="/cart">
           购物车
+          <span class="main_goods_nums"></span>
         </router-link>
         <router-link to="/mine">
       	    我的易果
@@ -51,7 +52,7 @@ export default {
   font-size: .12rem;
   color: #8d8a8a;
   box-sizing: content-box;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #d5d5d5;
   background-color: #fff;
   position: absolute;
   bottom: 0;
@@ -70,9 +71,10 @@ export default {
   line-height: 1;
   text-align: center;
   color: #8d8a8a;
-  padding-top: .36rem;
-  background: no-repeat center .075rem;
+  padding-top: .35rem;
+  background: no-repeat center .07rem;
   background-size: .32rem .24rem;
+  position: relative;
 }
 .main_navbar>a:nth-child(1) {
   background-image: url(../static/img/index/nav_home.png);
@@ -90,7 +92,7 @@ export default {
   background-image: url(../static/img/index/nav_user.png);
 }
 .main_navbar>a.router-link-active{
-  color: #11b57c;
+  color: #008842;
 }
 .main_navbar>a:nth-child(1).router-link-active{
   background-image: url(../static/img/index/nav_home_active.png);
@@ -106,5 +108,20 @@ export default {
 }
 .main_navbar>a:nth-child(5).router-link-active {
   background-image: url(../static/img/index/nav_user_active.png);
+}
+.main_goods_nums {
+  display: none;
+  width: .2rem;
+  height: .2rem;
+  font: .12rem Arial;
+  font-weight: bold;
+  color: #fff;
+  text-align: left;
+  border-radius: 50%;
+  background-color: #fb3d3d;
+  padding: .025rem;
+  position: absolute;
+  top: .03rem;
+  right: .02rem;
 }
 </style>
