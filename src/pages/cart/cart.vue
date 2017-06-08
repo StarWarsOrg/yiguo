@@ -4,6 +4,40 @@
 			<p>全场满100元包邮，还差<span>100.00</span>元包邮</p>
 		</div>
 		<div class="cart_zhuru">
+			<img src="../../assets/9288708295369401_300.jpg" class="cart_one"/>
+			<div class="cart_p">
+				<p class="cart_p1">北京大兴庞各庄袖珍西瓜2个1.4kg以上/个(北京)</p>
+				<p class="cart_p3"></p>
+				<p class="cart_p2">￥49</p>
+			</div>	
+			<div class="cart_jiajie">
+				<ul>
+					<li>-</li>
+					<li>1</li>
+					<li>+</li>
+				</ul>
+			</div>
+			<img src="../../assets/TCDwH9bKIVFHCP3s1uPSURuAGePP1AtDxB6xlh68DHZ8Bn+l2sM8NGd4B9ssOncCuiPzKNOw3fggcaScOOAYOoj5wcVMisgQ0gUVgtuTQL8A9cCoid8OafgCKbFslB+tZAwAAAABJRU5ErkJggg==.png" class="cart_tow"/>
+		</div>
+		
+		<!--猜你喜欢-->
+		<div class="cart_pushs">
+			<div class="cartPush_haed">
+				<p>——.猜你喜欢.——</p>
+			</div>
+			<div class="cartPush_lists"  >
+				
+				<div class="cartPush_list" v-for="datas in data" @click="push(datas.CommodityCode)">
+					<!--<router-link to="/cart1">-->
+				<img :src="datas.SmallPic" class="cartPush_img1"/>
+					<div class="cartPush_character">
+						<p class="cartPush_p1" >{{ datas.CommodityName }}</p>
+						<p class="cartPush_p2">{{ datas.CommodityPrice }}</p>
+					</div>
+					<!--</router-link>-->
+					<img src="../../assets/add.png" class="cartPush_img"/>
+				</div>			
+			</div>
 			
 		</div>
 	</div>
@@ -11,25 +45,176 @@
 
 <script>
 export default{
-	name: 'cart'
+	name: 'cart',
+	data(){
+		return {
+			data: [],
+		
+		}
+	},
+	
+	created () {
+		this.axios.get('../../../static/data/cartData.json').then(res => {			
+			this.data = res.data.RspData.GuessYouLikeCommoditys;
+			console.log(this.data);
+		})
+	},
+	methods: {
+//		push(datas) {
+//		    // 在方法中进行路由跳转，并传递参数
+////		    console.log(datas)
+//		     this.$router.push({
+//		     	this.id:'/cart1/'+ datas
+//		     })
+		push(code){
+			this.$router.push({
+				path:'/cart1?' + code,
+//				query:{
+//					id:code
+//				}
+			})
+		}
+		    
+		    // 带查询参数，变成 /listdetail/abc?plan=private
+//		    this.$router.push({
+//		        path: '/cart1/' + datas.CommodityCode, // 路径
+//		        query: { // 查询参数
+//		            plan: 'private'
+//		        }
+//		    })
+//		}
+	}
 }
 </script>
 <style>
 		.cart{
+			width: 100%;
+			height: 100%;
+			overflow-y: auto;
 			background:#f4f4f4;
-			height:500px;
+			font-size:.14rem;
 		}
 		.cart_head{
 			display: flex;
 			width:100%;
-			height:34px;
-			line-height:34px;
+			height:.34rem;
+			line-height:.34rem;
 			background:#fff9eb;
 			font-size:.14rem;
-			padding-left:9.6px;
-			margin-bottom:9.6px;
+			padding-left:.096rem;
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 400;
 		}
 		.cart_head p span{
-				color:red;
+			color:red;
 		}
+		.cart_zhuru{
+			background: white;
+			display: flex;
+			height:.859rem;
+			padding:.082rem 0 .082rem .314rem;
+			position: relative;
+			margin-bottom:.08rem;
+			margin-top: .422rem;
+		}
+		.cart_one{
+			widows:.695rem;
+			height:.695rem;
+		}
+		.cart_p{
+			width:1.62rem;
+			height:.69rem;
+			text-align: left;
+			font-size:.12rem;		
+		}
+		.cart_p1{
+			height:.2884rem;
+			width:1.62rem;
+		}
+		.cart_p3{
+			height:.22rem;
+			width:1.62rem;
+		}
+		.cart_p2{
+			color:red;
+			font-weight:800;
+		}
+		.cart_jiajie{
+			height:.185rem;
+			position:absolute;
+			bottom:.082rem;
+			right:.12rem;
+			font-size:.12rem;
+			text-align: center;
+			line-height:.185rem;
+		}
+		.cart_jiajie ul{
+			display:flex;
+		}
+		.cart_jiajie li{
+			width:.185rem;
+			height:.185rem;
+			border:.01rem solid #ddd;
+		}
+		.cart_tow{
+			height:.1288rem;
+			width:.1288rem;
+			position: absolute;
+			right:.12rem;
+		}
+		.cart_pushs{
+			background:white;
+			width:100%;
+		}
+		.cartPush_haed{
+			height:.425rem;
+			line-height:.425rem;
+			text-align:center;
+		}
+		.cartPush_lists{
+			display:flex;
+			width:100%;
+			justify-content: center;
+			flex-wrap:wrap;
+			padding-bottom:.19006rem;
+		}
+		.cartPush_list{
+			position:relative;
+			height:1.8545rem;
+			width:1.55rem;
+			padding:.04122rem .13655rem;
+		}
+		.cartPush_img{
+			height:.2061rem;
+			width:.2061rem;
+			position:absolute;
+			bottom:.04122rem;
+			right:.13rem;
+		}
+		.cartPush_img1{
+			height:1.2778rem;
+			width:1.2778rem;
+			display: block;
+		}
+		.cartPush_character{
+			font-size:.12rem;
+		}
+		.cartPush_p1{
+			font-size:.12rem;
+			width:1.2783rem;
+			height:.2884rem;
+			line-height:.14rem;
+			text-align:left;
+			overflow:hidden;
+		}
+		.cartPush_p2{
+			color:red;
+			width:1.2783rem;
+			height:.2061rem;
+			text-align:left;
+			line-height:.2061rem;
+		}
+		
 </style>

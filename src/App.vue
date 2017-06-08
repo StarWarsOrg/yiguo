@@ -18,7 +18,7 @@
           购物车
         </router-link>
         <router-link to="/mine">
-          我的易果
+      	    我的易果
         </router-link>
       </div>
     </div>
