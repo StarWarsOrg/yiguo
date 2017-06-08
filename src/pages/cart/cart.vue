@@ -4,7 +4,7 @@
 			<p>全场满100元包邮，还差<span>100.00</span>元包邮</p>
 		</div>
 		<div class="cart_zhuru">
-			<img src="../../assets/9288708295369401_300.jpg" class="cart_one"/>
+			<img src="http://img13.yiguoimg.com/e/items/2017/170525/9288708311655097_300.jpg" class="cart_one"/>
 			<div class="cart_p">
 				<p class="cart_p1">北京大兴庞各庄袖珍西瓜2个1.4kg以上/个(北京)</p>
 				<p class="cart_p3"></p>
@@ -17,7 +17,7 @@
 					<li>+</li>
 				</ul>
 			</div>
-			<img src="../../assets/TCDwH9bKIVFHCP3s1uPSURuAGePP1AtDxB6xlh68DHZ8Bn+l2sM8NGd4B9ssOncCuiPzKNOw3fggcaScOOAYOoj5wcVMisgQ0gUVgtuTQL8A9cCoid8OafgCKbFslB+tZAwAAAABJRU5ErkJggg==.png" class="cart_tow"/>
+			<img src="../../../static/img/cart/del.png" class="cart_tow"/>
 		</div>
 		
 		<!--猜你喜欢-->
@@ -35,7 +35,7 @@
 						<p class="cartPush_p2">{{ datas.CommodityPrice }}</p>
 					</div>
 					<!--</router-link>-->
-					<img src="../../assets/add.png" class="cartPush_img"/>
+					<img src="../../../static/img/cart/add.png" class="cartPush_img"/>
 				</div>			
 			</div>
 			
