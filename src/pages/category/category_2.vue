@@ -1,22 +1,21 @@
 <template>
 	<div id="category_2">
-	<h2>{{ id}}</h2>
 		<div class="categroy_2_header">
 			<ul class="sort">
-				<li class="selling default">默认</li>
-				<li class="price ">价格</li>
-				<li class="selling ">热销</li>
+				<li class="selling" :class="{default:index == indexx}" @click="addClass(index)" v-for="(item, index) in data2">{{item.name}}</li>
+				<!-- <li class="price ">价格</li>
+				<li class="selling ">热销</li> -->
 			</ul>
 		</div>
 		<div class="list_of_goods">
 			<ul>
-				<li class="commodity" v-for = "item in data">
+				<li class="commodity" @click="" v-for = "item in data">
 					<div class="picture">
 						<img :src="item.SmallPic" alt="">
 					</div>
 					<div class="commodity_information">
 						<p class="commodity_name">{{ item.CommodityName}}</p>
-						<p class="money">￥{{item.CommodityPrice}}<span>{{item.Spec}}</span></p>
+						<p class="money">￥{{item.CommodityPrice}}<span>({{item.Spec}})</span></p>
 					</div>
 					<span class="add_cart"></span>
 				</li>
@@ -33,6 +32,12 @@ export default{
 		return {
 			data: [],
 			id:this.$route.params.id,
+			data2: [
+				{name: '默认'},
+				{name: '价格'},
+				{name: '热销'}
+			],
+			indexx: false
 		}
 	},
 	created () {
@@ -43,7 +48,10 @@ export default{
 		})
 	},
 	methods: {
-
+		addClass (index) {
+			console.log(index);
+			this.indexx = index;
+		}
 	}
 }
 </script>
@@ -51,6 +59,7 @@ export default{
 #category_2{
 	height: 100%;
 	overflow: auto;
+	background: #fff;
 }
 .categroy_2_header{
 	position: fixed;
@@ -79,9 +88,7 @@ export default{
     line-height: .35rem;
     text-align: center;    
 }
-.price{
-	font-size: .14rem;
-	color: #299d1a;
+.sort li:nth-child(2){
     border: 1px solid #008842;
     border-top: none;
     border-bottom: none;
@@ -165,6 +172,6 @@ export default{
     line-height: .42rem;
 }
 .commodity_alone{
-	height: .70rem;
+	height: .20rem;
 }
 </style>

@@ -37,8 +37,7 @@
 					<!--</router-link>-->
 					<img src="../../../static/img/cart/add.png" class="cartPush_img"/>
 				</div>			
-			</div>
-			
+			</div>		
 		</div>
 	</div>
 </template>
