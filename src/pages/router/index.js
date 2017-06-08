@@ -14,7 +14,6 @@ import Cart from '../cart/cart'
 import Mine from '../mine/mine'
 import Category_category from '../category/category_2'
 import Detail from '../common/detail'
-import Cart1 from '../cart/cart1'
 
 //定义路由规则
 const routes = [
@@ -26,8 +25,7 @@ const routes = [
 	{path: '/cart', component: Cart},
 	{path: '/mine', component: Mine},
 	{path: '/category_2/:id', component: Category_category},
-	{path: '/detail', component: Detail},
-	{path: '/cart1',  component: Cart1}
+	{path: '/detail', component: Detail}
 ]
 
 export default new VueRouter({
