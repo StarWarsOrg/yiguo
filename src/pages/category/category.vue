@@ -10,16 +10,16 @@
 			<span class="search">搜索</span>
 		</div>
 		<ul>
-			<li class="category_item" v-for="item in data" @click="switchs()">
-				<div class="category_item_title">
+			<li class="category_item" @click="addClasss(index)" v-for="(item, index) in data" >
+				<div class="category_item_title" @click="switchs(index)">
 					<p class="category_item_icon"></p>
 					<div class="category_item_des">
 						<p>{{item.CategoryName}}</p>
 						<p>{{item.Description}}</p>
 					</div>
-					<span class="category_item_more"></span>
+					<span class="category_item_more" :class="{rotates:index == indexx}"></span>
 				</div>
-				<div class="category_item_wrap" v-show="true">
+				<div class="category_item_wrap" v-show="isShow == index">
 					<a>全部</a><a @click = "rotate(items)" v-for="items in item.Childs">{{items.CategoryName}}</a>
 				</div>
 			</li>
@@ -63,7 +63,9 @@ export default{
 	name: 'cartgory',
 	data(){
 		return {
-			data: []
+			data: [],
+			isShow: false,
+			indexx: false
 		}
 	},
 	
@@ -75,12 +77,16 @@ export default{
 		})
 	},
 	methods: {
-		switchs() {
-
+		switchs (index) {
+			console.log(index);
+			this.isShow = index;
 		},
 		rotate(item){
 			console.log(item);
 			this.$router.push('/category_2/'+item.CategoryCode);
+		},
+		addClasss(index){
+			this.indexx = index;
 		}
 	}
 }
@@ -163,8 +169,38 @@ export default{
 	background: url(../../../static/img/category/icon-catalog.png) no-repeat;
 	background-size: 2.88rem .96rem;
 }
-.category_item_title>p:nth-of-type(1){
+.category_item:nth-child(1)>div>.category_item_icon {
 	background-position: -1.92rem 0;
+}
+.category_item:nth-child(2)>div>.category_item_icon {
+	background-position: 0 0;
+}
+.category_item:nth-child(3)>div>.category_item_icon {
+	background-position: -1.44rem 0;
+}
+.category_item:nth-child(4)>div>.category_item_icon {
+	background-position: 0 -.48rem;
+}
+.category_item:nth-child(5)>div>.category_item_icon {
+	background-position: -.96rem 0;
+}
+.category_item:nth-child(6)>div>.category_item_icon {
+	background-position: -.96rem -.48rem;
+}
+.category_item:nth-child(7)>div>.category_item_icon {
+	background-position: -.48rem 0;
+}
+.category_item:nth-child(8)>div>.category_item_icon {
+	background-position: -2.4rem 0;
+}
+.category_item:nth-child(9)>div>.category_item_icon {
+	background-position: -1.92rem -.48rem;
+}
+.category_item:nth-child(10)>div>.category_item_icon {
+	background-position: -.48rem -.48rem;
+}
+.category_item:nth-child(11)>div>.category_item_icon {
+	background-position: -1.44rem -.48rem;
 }
 .category_item_des{
 	width: 2.3rem;
@@ -206,6 +242,7 @@ export default{
 .category_item_wrap{
 	width: 100%;
 	overflow: hidden;
+	 border-bottom: 1px solid #e1e5e5;
 }
 .category_item_wrap a{
 	display: inline-block;
@@ -217,5 +254,11 @@ export default{
     line-height: .26rem;
     text-align: left;
     border-bottom: 1px solid #e1e5e5;
+}
+.category_item_wrap a:last-child {
+	border-bottom: none;
+}
+.rotates{
+	-webkit-transform: rotate(90deg);
 }
 </style>
