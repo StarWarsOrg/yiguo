@@ -2,7 +2,7 @@
 	<div id="eat">
 		<div class="lbt">
 			<swiper :options="swiperOption" ref="mySwiper">
-				<swiper-slide v-for="item in data">
+				<swiper-slide v-for="(item,key) in data">
 					<img :src="item.PictureUrl">
 				</swiper-slide>
 				<div class="swiper-pagination" slot="pagination"></div>
