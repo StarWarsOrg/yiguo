@@ -12,7 +12,7 @@
             <div class="title-in title-pad" style="">
                 <ul class="icon-list clear" style="">
                     <li v-for="item in dataEatMain">
-                        <a target="_blank" href="http://article.m.yiguo.com/Article/Category/food?isopenhwa=1" title="">
+                        <a target="_blank" @click="eatfoot(item)" title="">
                             <img class="lazy icon1" :src="item.PictureUrl" alt="做美食" style="display: block;">
 							<i class="new"></i>
                             {{item.BannerName}}
@@ -63,12 +63,19 @@ export default{
 		this.axios.get('../../../static/data/eatBannerData.json').then(res =>{
 			this.data = res.data.RspData.data.AdSwiperImage35.Banners;
 			this.dataEatMain = res.data.RspData.data.AdCategory37.Banners;
+            console.log(res.data)
 		})
         this.axios.get('../../../static/data/eatMainData.json').then(res =>{
 			console.log(res.data);
 			this.dataEatFoot = res.data
 		})
-	}
+	},
+    methods: {
+        eatfoot(item){
+            console.log(item);
+            this.$router.push('eatfoot/'+item.LinkCode);
+        }
+    }
 }
 </script>
 <style>
