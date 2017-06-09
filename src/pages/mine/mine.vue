@@ -33,6 +33,7 @@ export default{
 	name: 'mine'
 }
 </script>
+
 <style>
 .warp{
 	height: 100%;

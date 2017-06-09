@@ -43,13 +43,13 @@ export default{
 	created () {
 		this.axios.get('../../../static/data/categorypro/' + this.id + '.json').then(res => {
 			this.data = res.data.RspData.data;
-			console.log(res.data);
+			// console.log(res.data);
 		
 		})
 	},
 	methods: {
 		addClass (index) {
-			console.log(index);
+			// console.log(index);
 			this.indexx = index;
 		}
 	}
