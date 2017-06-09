@@ -42,7 +42,7 @@ export default{
 	},
 	created () {
 		this.axios.get('../../../static/data/categorypro/' + this.id + '.json').then(res => {
-			this.data = res.data.RspData.data;	
+			this.data = res.data.RspData.data;
 		})
 	},
 	methods: {
