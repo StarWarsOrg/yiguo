@@ -13,8 +13,8 @@
 		<div class="title  title-icon" id="divOtherCategoryBanner">
             <div class="title-in title-pad" style="">
                 <ul class="icon-list clear" style="">
-                    <li v-for="item in dataEatMain">
-                        <a target="_blank" href="http://article.m.yiguo.com/Article/Category/food?isopenhwa=1" title="">
+                    <li v-for="(item,index) in dataEatMain">
+                        <a @click="eatfoot(index)">
                             <img class="lazy icon1" :src="item.PictureUrl" style="display: block;">
 							<i class="new"></i>
                             {{item.BannerName}}
@@ -60,19 +60,27 @@ export default{
 				prevButton: '.swiper-button-prev',
 				// 如果需要分页器
 				pagination: '.swiper-pagination'
-			}
+			},
+            arrs:['food','taste','know','live','tryEat']
 		}
 	},
 	created(){
 		this.axios.get('../../../static/data/eatBannerData.json').then(res =>{
 			this.data = res.data.RspData.data.AdSwiperImage35.Banners;
 			this.dataEatMain = res.data.RspData.data.AdCategory37.Banners;
+            // console.log(res.data)
 		})
         this.axios.get('../../../static/data/eatMainData.json').then(res =>{
-			console.log(res.data.RspData.ArticleList.List);
+			// console.log(res.data.RspData.ArticleList.List);
 			this.dataEatFoot = res.data.RspData.ArticleList.List;
 		})
-	}
+	},
+    methods: {
+        eatfoot(index){
+            // console.log(index);
+            this.$router.push('eatfoot/'+this.arrs[index]);
+        }
+    }
 }
 </script>
 <style>
