@@ -81,7 +81,7 @@ export default{
         eatfoot(index,item){
             // console.log(index);
             this.$router.push('eatfoot/'+this.arrs[index]);
-            this.$router.push('eatfoot/'+item.LinkCode);            
+            this.$router.push('eatfoot/'+item.LinkCode);
         }
     }
 }
