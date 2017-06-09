@@ -3,7 +3,7 @@
 	<div id="eat">
 		<div class="lbt">
 			<swiper :options="swiperOption" ref="mySwiper">
-				<swiper-slide v-for="(item,key) in data">
+				<swiper-slide v-for="item in data" :key="item.id">
 					<img :src="item.PictureUrl">
 				</swiper-slide>
 				<div class="swiper-pagination" slot="pagination"></div>
@@ -68,7 +68,9 @@ export default{
 		this.axios.get('../../../static/data/eatBannerData.json').then(res =>{
 			this.data = res.data.RspData.data.AdSwiperImage35.Banners;
 			this.dataEatMain = res.data.RspData.data.AdCategory37.Banners;
-            // console.log(res.data)
+
+            // console.log(res.data);
+
 		})
         this.axios.get('../../../static/data/eatMainData.json').then(res =>{
 			// console.log(res.data.RspData.ArticleList.List);
@@ -76,9 +78,10 @@ export default{
 		})
 	},
     methods: {
-        eatfoot(index){
+        eatfoot(index,item){
             // console.log(index);
             this.$router.push('eatfoot/'+this.arrs[index]);
+            this.$router.push('eatfoot/'+item.LinkCode);            
         }
     }
 }
