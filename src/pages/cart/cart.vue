@@ -59,29 +59,14 @@ export default{
 		})
 	},
 	methods: {
-//		push(datas) {
-//		    // 在方法中进行路由跳转，并传递参数
-////		    console.log(datas)
-//		     this.$router.push({
-//		     	this.id:'/cart1/'+ datas
-//		     })
 		push(code){
 			this.$router.push({
-				path:'/cart1?' + code,
+				path:'/detail?' + code,
 //				query:{
 //					id:code
 //				}
 			})
 		}
-		    
-		    // 带查询参数，变成 /listdetail/abc?plan=private
-//		    this.$router.push({
-//		        path: '/cart1/' + datas.CommodityCode, // 路径
-//		        query: { // 查询参数
-//		            plan: 'private'
-//		        }
-//		    })
-//		}
 	}
 }
 </script>
