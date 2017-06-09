@@ -6,7 +6,14 @@
 		</div>
 		<div class="home_item first" v-for="item in data.slice(0,1)">
 			<div class="home_swiperWrap">
-				<img src="http://img09.yiguoimg.com/e/items/2017/170608/9288708782006984_1125x652.jpg" />
+				<swiper :options="swiperOptiontop" ref="mySwiper">
+					<swiper-slide v-for="item in item.carouselPictures" :key="item.id">
+						<a :href="item.hrefValue">
+							<img :src="item.pictureUrl">
+						</a>
+					</swiper-slide>
+					<div class="swiper-pagination" slot="pagination"></div>
+				</swiper>
 			</div>
 			<a class="home_banner" v-for="banner in item.adPictures" :href="banner.hrefValue">
 				<img :src="banner.pictureUrl">
@@ -19,8 +26,12 @@
 			</div>
 			<div class="home_news">
 				<span></span>
-				<div>
-					<p>【6折】中润长江优选冷鲜猪蹄400g</p>
+				<div class="home_newsWrap">
+					<swiper :options="swiperOptionNews" ref="mySwiper">
+						<swiper-slide v-for="news in item.fastReports" :key="item.id">
+							<a v-text="news.fastReportTitle" :href="news.hrefValue"></a>
+						</swiper-slide>
+					</swiper>
 				</div>
 			</div>
 		</div>
@@ -31,7 +42,7 @@
 			<div class="home_productlist">
 				<ul>
 					<li v-for="proinfo in secitem.componentCommoditys">
-						<a href="">
+						<a @click="gotodetail(proinfo.commodityCode)">
 							<div class="propic">
 								<img class="tag" :src="proinfo.cornerPictureUrl" v-show="proinfo.cornerPictureUrl != ''">
 								<img :src="proinfo.pictureUrl">
@@ -58,7 +69,7 @@
 		</div>
 		<ul class="home_item fouitem" v-for="fouitem in data.slice(9,11)">
 			<li v-for="proinfo in fouitem.componentCommoditys">
-				<a href="">
+				<a @click="gotodetail(proinfo.commodityCode)">
 					<div class="propic">
 						<img class="tag" :src="proinfo.cornerPictureUrl" v-show="proinfo.cornerPictureUrl != ''">
 						<img :src="proinfo.pictureUrl">
@@ -80,7 +91,7 @@
 			</div>
 			<ul>
 				<li v-for="proinfo in fivitem.componentCommoditys">
-					<a href="">
+					<a @click="gotodetail(proinfo.commodityCode)">
 						<div class="propic">
 							<img class="tag" :src="proinfo.cornerPictureUrl" v-show="proinfo.cornerPictureUrl != ''">
 							<img :src="proinfo.pictureUrl">
@@ -114,16 +125,35 @@ export default{
 	data(){
 		return {
 			data: [],
-			cityName: []
+			cityName: [],
+			swiperOptiontop: {
+				autoplay: 2000,
+				observer: true,
+				autoplayDisableOnInteraction: false,
+				loop : true,
+				//分页器
+				pagination: '.swiper-pagination'
+			},
+			swiperOptionNews: {
+				autoplay: 2000,
+				observer: true,
+				direction : 'vertical',
+				loop : true,
+			}
 		}
 	},
 	created () {
 		this.axios.get('../../../static/data/homeData.json').then(res => {
-			
 			this.data = res.data.data.template.componentList;
 		})
 		this.cityName = this.$route.query.city || '北京';
 	},
+	methods: {
+		gotodetail(id) {
+			console.log(id)
+			this.$router.push('/detail?'+ id);
+		}
+	}
 }
 
 </script>
@@ -182,9 +212,24 @@ export default{
 	width: 100%;
 	height: 1.855rem;
 }
-.home_swiperWrap>img {
+.home_swiperWrap>.swiper-container {
 	width: 100%;
 	height: 100%;
+}
+.home_swiperWrap .swiper-slide>a>img {
+	width: 100%;
+	height: 100%;
+}
+.home_swiperWrap .swiper-pagination-bullet {
+	width: .06rem;
+	height: .06rem;
+	background: url(../../../static/img/home/dian.png) no-repeat center;
+	opacity: 1;
+}
+.home_swiperWrap .swiper-pagination-bullet-active {
+	width: .08rem;
+	height: .08rem;
+	vertical-align: -.01rem;
 }
 .home_banner {
 	display: block;
@@ -244,7 +289,6 @@ export default{
 	background-size: .49rem .11rem;
 	background-position: .12882rem .09rem;
 	position: relative;
-
 }
 .home_news>span:after {
 	content: '';
@@ -262,6 +306,15 @@ export default{
 	height: 100%;
 	color: rgb(51, 51, 51);
 	padding: .05688rem .08245rem .05688rem .1rem;
+}
+.home_newsWrap>.swiper-container {
+	width: 100%;
+	height: 100%;
+}
+.home_newsWrap>.swiper-container a {
+	display: block;
+	width: 100%;
+	height: 100%;
 }
 .secitem>a {
 	display: block;
