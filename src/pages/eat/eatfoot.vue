@@ -1,5 +1,4 @@
 <template>
-
 	<div id="eatfoot">
 		<router-link to="/eat" id="eatFh"><img src="../../../static/img/eat/return.png"></router-link>
 		<!--主要页面内容-->
@@ -22,7 +21,6 @@
 			</li>
 		</ul>
 	</div>
-
 </template>
 <script>
 	export default{
@@ -30,23 +28,16 @@
 		data(){
 			return {
 				data: [],
-				id:this.$route.params.id,
+				id:this.$route.params.id
 			}
 		},
 		created () {
 			this.axios.get('../../../static/data/eat/' + this.id + '.json').then(res => {
-				
                 this.data = res.data.RspData.ArticleList.List;
-				// console.log(res.data)
-				
-                this.data = res.data.RspData.data;
-				console.log(res.data)	
-
-                			})
+            })
 		}
 	}
 </script>
-
 <style scoped>
 #eatfoot{
 	width: 100%;

@@ -68,20 +68,17 @@ export default{
 		this.axios.get('../../../static/data/eatBannerData.json').then(res =>{
 			this.data = res.data.RspData.data.AdSwiperImage35.Banners;
 			this.dataEatMain = res.data.RspData.data.AdCategory37.Banners;
-
-            // console.log(res.data);
-
 		})
+        
         this.axios.get('../../../static/data/eatMainData.json').then(res =>{
 			// console.log(res.data.RspData.ArticleList.List);
 			this.dataEatFoot = res.data.RspData.ArticleList.List;
 		})
 	},
     methods: {
-        eatfoot(index,item){
+        eatfoot(index){
             // console.log(index);
             this.$router.push('eatfoot/'+this.arrs[index]);
-            this.$router.push('eatfoot/'+item.LinkCode);
         }
     }
 }
