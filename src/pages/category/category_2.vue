@@ -13,7 +13,7 @@
 					<div class="picture">
 						<img :src="item.SmallPic" alt="">
 					</div>
-					<div class="commodity_information">
+					<div class="commodity_information" @click = "rotates(item.CommodityCode)">
 						<p class="commodity_name">{{ item.CommodityName}}</p>
 						<p class="money">￥{{item.CommodityPrice}}<span>({{item.Spec}})</span></p>
 					</div>
@@ -43,14 +43,22 @@ export default{
 	created () {
 		this.axios.get('../../../static/data/categorypro/' + this.id + '.json').then(res => {
 			this.data = res.data.RspData.data;
-			console.log(res.data);
-		
 		})
 	},
 	methods: {
 		addClass (index) {
-			console.log(index);
+			// console.log(index);
 			this.indexx = index;
+		},
+		rotates(item){
+			console.log(item);
+			// this.$router.push('/detail.vue/'+item);
+			this.$router.push({
+				path:'/detail?' + item,
+				// query:{
+				// 	id:code
+				// }
+			})
 		}
 	}
 }

@@ -1,19 +1,21 @@
 <template>
+    <!--轮播图部分-->
 	<div id="eat">
 		<div class="lbt">
 			<swiper :options="swiperOption" ref="mySwiper">
-				<swiper-slide v-for="(item,key) in data">
+				<swiper-slide v-for="item in data" :key="item.id">
 					<img :src="item.PictureUrl">
 				</swiper-slide>
 				<div class="swiper-pagination" slot="pagination"></div>
 			</swiper>
 		</div>
+        <!--路由导航部分-->
 		<div class="title  title-icon" id="divOtherCategoryBanner">
             <div class="title-in title-pad" style="">
                 <ul class="icon-list clear" style="">
-                    <li v-for="item in dataEatMain">
-                        <a target="_blank" href="http://article.m.yiguo.com/Article/Category/food?isopenhwa=1" title="">
-                            <img class="lazy icon1" :src="item.PictureUrl" alt="做美食" style="display: block;">
+                    <li v-for="(item,index) in dataEatMain">
+                        <a @click="eatfoot(index)">
+                            <img class="lazy icon1" :src="item.PictureUrl" style="display: block;">
 							<i class="new"></i>
                             {{item.BannerName}}
                         </a>
@@ -21,21 +23,22 @@
                 </ul>
             </div>
         </div>
+        <!--主内容部分-->
         <ul class="title open-article clearFloat" id="rptIndexArt_baaaefd5-e84c-4712-967c-a77030fe4e22" rownum="1" pageindex="1">
-            <li class="title-in clearFloat">
+            <li class="title-in clearFloat" v-for="(item,key) in dataEatFoot">
                 <div class="img-box">
-                    <span class="txt food">做美食</span>
-                    <span class="num"><i class="icon icon5"></i>1914</span>
-                    <img class="lazy" src="http://img14.yiguoimg.com/e/albums/2017/170608/153403896860517064_800x468.jpg" alt="爱吃牛肉的你，一定不容错过这几款牛肉面(粉)！" style="display: block;">
+                    <span class="txt food">{{item.OtherCategoryName}}</span>
+                    <span class="num"><i class="icon icon5"></i>{{item.InitReadNum}}</span>
+                    <img class="lazy" :src="item.PictureUrl" alt="{EfruitArticleTitle}" style="display: block;">
                 </div>
                 <p class="tit1">
-                    爱吃牛肉的你，一定不容错过这几款牛肉面(粉)！
+                    {{item.EfruitArticleTitle}}
                 </p>
-                <p class="tit2">进来嗦面（粉）！</p>
+                <p class="tit2">{{item.EfruitArticleSummary}}</p>
                 <div class="time">
-                    <img class="lazy  img-circle img-responsive" src="http://img14.yiguoimg.com/e/albums/2017/170608/153403896860549832_210.jpg" alt="易果君" style="display: block;">
-                    <span class="name">易果君&nbsp;</span>
-                    <span class="time-new">5小时前</span>
+                    <img class="lazy  img-circle img-responsive" :src="item.AuthorPicture" alt="{item.Author}" style="display: block;">
+                    <span class="name">{{item.Author}}&nbsp;</span>
+                    <span class="time-new">{{item.PublishedTimed}}</span>
                 </div>                   
             </li>
         </ul>
@@ -49,25 +52,34 @@ export default{
 		return {
 			data: [],
 			dataEatMain: [],
+            dataEatFoot: [],
 			swiperOption: {
 				autoplay: 1500,
 				observer: true,
 				// 如果需要分页器
 				pagination: '.swiper-pagination'
-			}
+			},
+            arrs:['food','taste','know','live','tryEat']
 		}
 	},
 	created(){
 		this.axios.get('../../../static/data/eatBannerData.json').then(res =>{
 			this.data = res.data.RspData.data.AdSwiperImage35.Banners;
 			this.dataEatMain = res.data.RspData.data.AdCategory37.Banners;
-			console.log(res.data.RspData.data.AdSwiperImage35.Banners);
+
 		})
         this.axios.get('../../../static/data/eatMainData.json').then(res =>{
-			console.log(res.data);
-			this.dataEatFoot = res.data
+			// console.log(res.data.RspData.ArticleList.List);
+			this.dataEatFoot = res.data.RspData.ArticleList.List;
 		})
-	}
+	},
+    methods: {
+        eatfoot(index,item){
+            // console.log(index);
+            this.$router.push('eatfoot/'+this.arrs[index]);
+            this.$router.push('eatfoot/'+item.LinkCode);
+        }
+    }
 }
 </script>
 <style>
