@@ -50,7 +50,7 @@
 				<p>合计(不含运费)：<b class="red">￥ 176.00</b></p>
 				<span>以优惠：￥0.00</span>
 			</div>
-			<div></div>
+			<div class="settlement">去结算</div>
 		</div>
 	</div>
 </template>

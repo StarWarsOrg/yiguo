@@ -43,8 +43,6 @@ export default{
 	created () {
 		this.axios.get('../../../static/data/categorypro/' + this.id + '.json').then(res => {
 			this.data = res.data.RspData.data;
-			// console.log(this.data);
-		
 		})
 	},
 	methods: {
@@ -54,7 +52,7 @@ export default{
 		},
 		rotates(item){
 			console.log(item);
-			// this.$router.push('/detail.vue/'+item);
+			// this.$router.push('/detail?'+item);
 			this.$router.push({
 				path:'/detail?' + item,
 				// query:{
