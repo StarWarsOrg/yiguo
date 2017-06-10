@@ -52,8 +52,6 @@ export default{
 			swiperOption: {
 				autoplay: 1500,
 				observer: true,
-				nextButton: '.swiper-button-next',
-				prevButton: '.swiper-button-prev',
 				// 如果需要分页器
 				pagination: '.swiper-pagination'
 			}
@@ -63,6 +61,7 @@ export default{
 		this.axios.get('../../../static/data/eatBannerData.json').then(res =>{
 			this.data = res.data.RspData.data.AdSwiperImage35.Banners;
 			this.dataEatMain = res.data.RspData.data.AdCategory37.Banners;
+			console.log(res.data.RspData.data.AdSwiperImage35.Banners);
 		})
         this.axios.get('../../../static/data/eatMainData.json').then(res =>{
 			console.log(res.data);

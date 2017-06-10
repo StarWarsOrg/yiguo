@@ -3,18 +3,18 @@
 		<div class="cart_head">
 			<p>全场满100元包邮，还差<span>100.00</span>元包邮</p>
 		</div>
-		<div class="cart_zhuru">
-			<img src="http://img13.yiguoimg.com/e/items/2017/170525/9288708311655097_300.jpg" class="cart_one"/>
+		<div class="cart_zhuru" v-for="item in getArr">
+			<img :src="item.SmallPic" class="cart_one"/>
 			<div class="cart_p">
-				<p class="cart_p1">北京大兴庞各庄袖珍西瓜2个1.4kg以上/个(北京)</p>
+				<p class="cart_p1">{{ item.CommodityName}}</p>
 				<p class="cart_p3"></p>
-				<p class="cart_p2">￥49</p>
+				<p class="cart_p2">￥{{item.CommodityPrice}}</p>
 			</div>	
 			<div class="cart_jiajie">
 				<ul>
-					<li>-</li>
-					<li>1</li>
-					<li>+</li>
+					<li @click="jian(item)">-</li>
+					<li>{{ item.count }}</li>
+					<li @click="jia(item)">+</li>
 				</ul>
 			</div>
 			<img src="../../../static/img/cart/del.png" class="cart_tow"/>
@@ -27,15 +27,15 @@
 			</div>
 			<div class="cartPush_lists"  >
 				
-				<div class="cartPush_list" v-for="datas in data" @click="push(datas.CommodityCode)">
+				<div class="cartPush_list" v-for="datas in data" >
 					<!--<router-link to="/cart1">-->
-				<img :src="datas.SmallPic" class="cartPush_img1"/>
+				<img :src="datas.SmallPic" class="cartPush_img1"@click="push(datas.CommodityCode)"/>
 					<div class="cartPush_character">
 						<p class="cartPush_p1" >{{ datas.CommodityName }}</p>
 						<p class="cartPush_p2">{{ datas.CommodityPrice }}</p>
 					</div>
 					<!--</router-link>-->
-					<img src="../../../static/img/cart/add.png" class="cartPush_img"/>
+					<img src="../../../static/img/cart/add.png" class="cartPush_img" @click="jia(datas)"/>
 				</div>			
 			</div>		
 		</div>
@@ -48,6 +48,7 @@ export default{
 	data(){
 		return {
 			data: [],
+//			getItem:[]
 		
 		}
 	},
@@ -66,7 +67,21 @@ export default{
 //					id:code
 //				}
 			})
+		},
+		jia(item){
+			//第一个参数找到vuejs对应触发的事件名。第二个是传送的对象
+			this.$store.commit("ADD_COUNT", item);
+			console.log(this.$store.state.arr);
+//			this.count = item;
+		},
+		jian(item){
+			this.$store.commit('REDUCE_COUNT',item)
 		}
+	},
+	computed:{
+			getArr(){
+				return this.$store.state.arr
+			}
 	}
 }
 </script>
@@ -77,6 +92,7 @@ export default{
 			overflow-y: auto;
 			background:#f4f4f4;
 			font-size:.14rem;
+			margin-top: .4rem;
 		}
 		.cart_head{
 			display: flex;
@@ -101,7 +117,7 @@ export default{
 			padding:.082rem 0 .082rem .314rem;
 			position: relative;
 			margin-bottom:.08rem;
-			margin-top: .422rem;
+			/*margin-top: .422rem;*/
 		}
 		.cart_one{
 			widows:.695rem;
