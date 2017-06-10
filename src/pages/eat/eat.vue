@@ -56,8 +56,6 @@ export default{
 			swiperOption: {
 				autoplay: 1500,
 				observer: true,
-				nextButton: '.swiper-button-next',
-				prevButton: '.swiper-button-prev',
 				// 如果需要分页器
 				pagination: '.swiper-pagination'
 			},
