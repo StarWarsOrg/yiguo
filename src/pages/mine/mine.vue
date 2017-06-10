@@ -17,8 +17,8 @@
 				</div>
 			</div>
 			<div id="userList" class="user-list clearfix">
-				<a class="user-list-icon01" href="/orderlist/"><span>我的订单</span>我的订单</a>
-				<a class="user-list-icon02" href="/mycoupon/"><span>优惠券</span>优惠券</a>
+				<a class="user-list-icon01"><span>我的订单</span>我的订单</a>
+				<a class="user-list-icon02" @click="minegwq()"><span>优惠券</span>优惠券</a>
 				<a class="user-list-icon03" href="/addresslist/"><span>收货地址</span>收货地址</a>
 				<a class="user-list-icon06" href="tel:4000007788"><span>客服电话</span>客服电话</a>
 				<a class="user-list-icon05" href=" http://recharge2.m.yiguo.com/"><span>提货券</span>提货券</a>  
@@ -30,9 +30,20 @@
 
 <script>
 export default{
-	name: 'mine'
+	name: 'mine',
+    data () {
+        return {
+            data:[]
+        }
+    },
+    methods: {
+        minegwq (id) {
+            this.$router.push('minegwq/');
+        }
+    }
 }
 </script>
+
 <style>
 .warp{
 	height: 100%;

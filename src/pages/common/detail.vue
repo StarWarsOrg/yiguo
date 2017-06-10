@@ -2,7 +2,12 @@
 	<div class="cart_details">
 		<!--轮播图-->
 		<div class="slideshow">
-			
+			<swiper :options="swiperOption" ref="mySwiper" class="swipers">
+				<swiper-slide v-for="(item,index) in data.Pictures">
+					<img :src="data.Pictures[index]">
+				</swiper-slide>
+				<div class="swiper-pagination" slot="pagination"></div>
+			</swiper>
 		</div>
 		<!--介绍-->
 		<div class="cart_introduce">
@@ -33,7 +38,23 @@
 		<div class="Image_details">
 			<p>商品图文详情（建议在WIFI下查看）</p>
 		</div>
+		<div class="bottoms">
+			
+			<p>首页
+				<router-link to="/home">
+				<img src="../../../static/img/cart/download.png"/>
+				</router-link>
+			</p>
+			
+			<p>购物车
+				<router-link to="/cart">
+				<img src="http://img05.yiguoimg.com/e/web/161227/00585/180433/shopping-cart.png"/>
+				</router-link">
+			</p>
+			<p>加入购物车</p>
+		</div>
 	</div>
+		
 </template>
 
 <script>
@@ -44,16 +65,23 @@
 				id: this.$route.query,
 				data:[],
 //				params
+				swiperOption: {
+				observer: false,
+//				nextButton: '.swiper-button-next',
+//				prevButton: '.swiper-button-prev',
+				// 如果需要分页器
+				pagination: '.swiper-pagination'
+			}
 			}
 		},
 		//创建完成后
 		created(){
-			console.log(this.id)
+//			console.log(this.id)
 			this.axios.get('../../../static/data/xiangqing.json').then(res => {			
 				this.data = res.data.RspData.data;
 	//			let date = res;
 				
-				console.log(res.data.RspData.data);
+				console.log(res.data.RspData.data.Pictures);
 			})
 		},
 		computed:{
@@ -75,7 +103,15 @@
 	}
 	.slideshow{
 		height:2rem;
-		background:yellow;
+		width: 100%;
+	}
+	.swipers{
+		width: 100%;
+		height: 2rem;
+	}
+	.slideshow img{
+		width: 100%;
+		height: 100%;
 	}
 	.cart_introduce{
 		font-size:.14rem;
@@ -169,6 +205,52 @@
 		border-bottom:1px solid #ddd;
 		font-size:.12rem;
 		line-height:.30rem;
-		margin-bottom:.30rem;
+		/*margin-bottom:.30rem;*/
+	}
+	.bottoms{
+		background:white;
+		display:flex;
+		height:.5rem;
+		position:fixed;
+		bottom:0;
+		left:0;
+		right:0;
+		z-index:999;
+		font-size:.14rem;
+	}
+	.bottoms p:first-child{
+		width:.7039rem;
+		height:.50rem;
+		text-align:center;
+		position:relative;
+		padding-top:.30rem;
+		line-height:.20rem;
+	}
+	.bottoms p img:first-child{
+		width:.23rem;
+		height:.20rem;
+		position:absolute;
+		top:.09rem;
+		left:.25rem;
+	}
+	.bottoms p:nth-child(2){
+		width:.7039rem;
+		text-align:center;
+		padding-top:.30rem;
+		position: relative;
+	}
+	.bottoms p img:nth-child(2){
+		width:.22rem;
+		height:.19rem;
+		position:absolute;
+		top:0;
+		left:0;
+	}
+	.bottoms p:last-child{
+		width:1.7919rem;
+		background:#fb3d3d;
+		text-align:center;
+		color:white;
+		line-height:.50rem;
 	}
 </style>

@@ -72,17 +72,17 @@ export default{
 	created () {
 		this.axios.get('../../../static/data/categoryData.json').then(res => {
 			this.data = res.data.RspData.data;
-			console.log(res.data);
+			// console.log(res.data);
 			
 		})
 	},
 	methods: {
 		switchs (index) {
-			console.log(index);
+			// console.log(index);
 			this.isShow = index;
 		},
 		rotate(item){
-			console.log(item);
+			// console.log(item);
 			this.$router.push('/category_2/'+item.CategoryCode);
 		},
 		addClasss(index){

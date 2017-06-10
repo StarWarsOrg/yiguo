@@ -15,6 +15,7 @@ import Mine from '../mine/mine'
 import Category_category from '../category/category_2'
 import Detail from '../common/detail'
 import EatFoot from '../eat/eatfoot'
+import Minegwq from '../mine/minegwq'
 
 //定义路由规则
 const routes = [
@@ -27,7 +28,8 @@ const routes = [
 	{path: '/mine', component: Mine},
 	{path: '/category_2/:id', component: Category_category},
 	{path: '/detail', component: Detail},
-	{path: '/eatfoot/:id', component: EatFoot}
+	{path: '/eatfoot/:id', component: EatFoot},
+	{path: '/minegwq', component: Minegwq}
 ]
 
 export default new VueRouter({

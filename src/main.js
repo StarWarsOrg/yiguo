@@ -2,7 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-
+import store from './vuex/vuex'
 //将路由引入到router变量中， 为了挂载到vue实例上
 //如果引入的是文件夹内部的index.js文件，可以不写index
 import router from './pages/router'
@@ -27,6 +27,7 @@ new Vue({
   el: '#app',
   template: '<App/>',
   components: { App },
-  router
+  router,
+  store
 })
 
