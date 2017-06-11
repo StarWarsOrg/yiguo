@@ -56,7 +56,8 @@ export default{
 			swiperOption: {
 				autoplay: 1500,
 				observer: true,
-				// 如果需要分页器
+				loop : true,
+				//分页器
 				pagination: '.swiper-pagination'
 			},
             arrs:['food','taste','know','live','tryEat']
