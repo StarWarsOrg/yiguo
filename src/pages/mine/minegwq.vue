@@ -1,7 +1,11 @@
 <template>
     <div id="minegwq">
-        <div class="gwq"></div>
-        <div class="gwq"></div>
+        <div class="gwq">
+            <img src="../../../static/img/mine/coupon/coupon-gwq1.png">
+        </div>
+        <div class="gwq">
+            <img src="../../../static/img/mine/coupon/coupon-gwq2.png">            
+        </div>
     </div>
 </template>
 
@@ -28,5 +32,7 @@ export default{
     margin: auto auto .15rem auto;
     background: url(../../../static/img/mine/coupon/coupon-bg.png) no-repeat;
     background-size: 3rem 1.41rem;
+    text-align: center;
+    padding-top: .13rem;
 }
 </style>

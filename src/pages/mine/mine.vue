@@ -18,11 +18,11 @@
 			</div>
 			<div id="userList" class="user-list clearfix">
 				<a class="user-list-icon01"><span>我的订单</span>我的订单</a>
-				<a class="user-list-icon02" @click="minegwq()"><span>优惠券</span>优惠券</a>
-				<a class="user-list-icon03" href="/addresslist/"><span>收货地址</span>收货地址</a>
-				<a class="user-list-icon06" href="tel:4000007788"><span>客服电话</span>客服电话</a>
-				<a class="user-list-icon05" href=" http://recharge2.m.yiguo.com/"><span>提货券</span>提货券</a>  
-				<a class="user-list-icon07" href="javascript:void(0);" id="btnGwpt"><span>团来团趣</span>团来团趣</a>     
+				<a class="user-list-icon02" @click="minegwq()"><span>优惠券</span>优惠券<font class="badge">2</font></a>
+				<a class="user-list-icon03"><span>收货地址</span>收货地址</a>
+				<a class="user-list-icon06"><span>客服电话</span>客服电话</a>
+				<a class="user-list-icon05"><span>提货券</span>提货券</a>  
+				<a class="user-list-icon07"id="btnGwpt"><span>团来团趣</span>团来团趣</a>
 			</div>
 		</div>
 	</div>
@@ -113,6 +113,7 @@ img{
 }
 .user-list {
     width: 2.85rem;
+    height: 1.74rem;
     margin: .4rem auto 0 auto;
 }
 .user-list a {
@@ -156,5 +157,30 @@ img{
 .user-list a:nth-of-type(6) span{
     background: url(../../../static/img/mine/icon-usercenter.png) no-repeat -2.4rem;
     background-size: 3.36rem .48rem;
+}
+.user-list .badge {
+    background-color: #ff0000;
+    left: auto;
+    right: 3px;
+    top: 2px;
+}
+.badge {
+    position: absolute;
+    padding: .02rem .04rem;
+    text-align: center;
+    text-indent: 0;
+    font-family: Arial;
+    background: #fb3d3d;
+}
+.badge {
+    display: inline-block;
+    min-width: .1rem;
+    font-size: .12rem;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .1rem;
 }
 </style>
