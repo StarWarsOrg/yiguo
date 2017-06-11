@@ -37,7 +37,7 @@ export default new Vuex.Store({
 				if(item.CommodityCode == a.CommodityCode) {
 					a !== item && item.count--;
 					a.count--;
-					if(a.count == 1) {
+					if(a.count < 1) {
 						state.arr.splice(i, 1)
 					}
 				}

@@ -3,8 +3,6 @@
 		<div class="categroy_2_header">
 			<ul class="sort">
 				<li class="selling" :class="{default:index == indexx}" @click="addClass(index)" v-for="(item, index) in data2">{{item.name}}</li>
-				<!-- <li class="price ">价格</li>
-				<li class="selling ">热销</li> -->
 			</ul>
 		</div>
 		<div class="list_of_goods">

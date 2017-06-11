@@ -10,7 +10,7 @@
 			<span class="search">搜索</span>
 		</div>
 		<ul>
-			<li class="category_item" @click="addClasss(index)" v-for="(item, index) in data" >
+			<li class="category_item" v-for="(item, index) in data" >
 				<div class="category_item_title" @click="switchs(index)">
 					<p class="category_item_icon"></p>
 					<div class="category_item_des">
@@ -23,49 +23,20 @@
 					<a>全部</a><a @click = "rotate(items)" v-for="items in item.Childs">{{items.CategoryName}}</a>
 				</div>
 			</li>
-		<!-- 	<li class="category_item">
-				<div class="category_item_title">
-					<span class="category_item_icon"></span>
-					<div class="category_item_des">
-						<p>进口水果</p>
-						<p>奇异果/车厘子/牛油果/柑桔橙柚</p>
-					</div>
-					<span class="category_item_more"></span>
-				</div>
-				<div class="category_item_wrap">
-					<a href="">全部</a><a href="">奇异果</a><a href="">车厘子</a>
-					<a href="">李</a><a href="">梅</a><a href="">牛油果</a>
-				</div>
-			</li> -->
 			<li class="category_item_last"></li>
-			<!-- <button @click="revice()">recive</button> -->
 		</ul>
 	</div>
 </template>
 
 <script>
-// export default{
-// 	name: 'category',
-// 	data() {
-// 		categoryData: this.alldata;
-// 		return {
-// 			categoryDatea
-// 		}
-// 	},
-// 	methods: {
-// 		revice() {
-// 			console.log(this.alldata);
-// 		}
-// 	}
-// }
-
 export default{
 	name: 'cartgory',
 	data(){
 		return {
 			data: [],
-			isShow: false,
-			indexx: false
+			isShow: 100,
+			indexx: 100,
+			flag: 100
 		}
 	},
 	
@@ -73,21 +44,24 @@ export default{
 		this.axios.get('../../../static/data/categoryData.json').then(res => {
 			this.data = res.data.RspData.data;
 			// console.log(res.data);
-			
 		})
 	},
 	methods: {
 		switchs (index) {
 			// console.log(index);
-			this.isShow = index;
+			if (this.flag==100) {
+				this.isShow = index;
+				this.indexx = index;
+				this.flag = !100;
+			}else if(this.flag!=100){
+				this.isShow = 100;
+				this.indexx = 100;
+				this.flag = 100;
+			}
 		},
 		rotate(item){
-			// console.log(item);
 			this.$router.push('/category_2/'+item.CategoryCode);
 		},
-		addClasss(index){
-			this.indexx = index;
-		}
 	}
 }
 </script>

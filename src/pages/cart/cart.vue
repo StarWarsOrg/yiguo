@@ -35,19 +35,9 @@
 						<p class="cartPush_p2">{{ datas.CommodityPrice }}</p>
 					</div>
 					<!--</router-link>-->
-					<img src="../../../static/img/cart/add.png" class="cartPush_img"/>
-				</div>
-			</div>
-		</div>
-		<div class="calculation">
-			<div class="contain_selet">
-				<span class="selet selet2"></span><span class="quan">全选</span>
-			</div>
-			<div class="cart_money">
-				<p>合计(不含运费)：<b class="red">￥ 176.00</b></p>
-				<span>以优惠：￥0.00</span>
-			</div>
-			<div class="settlement">去结算</div>
+					<img src="../../../static/img/cart/add.png" class="cartPush_img" @click="jia(datas)"/>
+				</div>			
+			</div>		
 		</div>
 	</div>
 </template>
@@ -188,7 +178,7 @@ export default{
 	width:100%;
 	justify-content: center;
 	flex-wrap:wrap;
-	padding-bottom:.19006rem;
+	padding-bottom:.39006rem;
 }
 .cartPush_list{
 	position:relative;
