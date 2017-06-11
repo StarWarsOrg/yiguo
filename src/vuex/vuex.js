@@ -8,7 +8,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
 	state: {
 		//公共数据
-		arr:[]
+		arr:[],
+		obj:{}
 	},
 	
 	mutations: {
@@ -30,15 +31,21 @@ export default new Vuex.Store({
 //					console.log(state)
 			}
 		},
+		ADD_OBJ(state,item){
+			console.log(123);
+			state.obj = item;
+			console.log(state.obj);
+		},
 		
 		REDUCE_COUNT(state, item){
 			//a是对象。i是下标
 			state.arr.map(function(a, i){
 				if(item.CommodityCode == a.CommodityCode) {
-					a !== item && item.count--;
-					a.count--;
-					if(a.count == 1) {
+					a !== item && item.count--,a.count--;
+					
+					if(a.count < 1) {
 						state.arr.splice(i, 1)
+						
 					}
 				}
 			})
