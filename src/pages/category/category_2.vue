@@ -7,15 +7,17 @@
 		</div>
 		<div class="list_of_goods">
 			<ul>
-				<li class="commodity" @click="" v-for = "item in data">
-					<div class="picture">
-						<img :src="item.SmallPic" alt="">
+				<li class="commodity" v-for = "item in data">
+					<div @click = "rotates(item.CommodityCode)">
+						<div class="picture">
+							<img :src="item.SmallPic" alt="">
+						</div>
+						<div class="commodity_information">
+							<p class="commodity_name">{{ item.CommodityName}}</p>
+							<p class="money">￥{{item.CommodityPrice}}<span>({{item.Spec}})</span></p>
+						</div>
 					</div>
-					<div class="commodity_information" @click = "rotates(item.CommodityCode)">
-						<p class="commodity_name">{{ item.CommodityName}}</p>
-						<p class="money">￥{{item.CommodityPrice}}<span>({{item.Spec}})</span></p>
-					</div>
-					<span class="add_cart"></span>
+					<span class="add_cart" @click = "addGoods(item)"></span>
 				</li>
 				<li class="commodity_alone"></li>
 			</ul>
@@ -45,18 +47,15 @@ export default{
 	},
 	methods: {
 		addClass (index) {
-			// console.log(index);
 			this.indexx = index;
 		},
 		rotates(item){
-			console.log(item);
-			// this.$router.push('/detail?'+item);
 			this.$router.push({
 				path:'/detail?' + item,
-				// query:{
-				// 	id:code
-				// }
 			})
+		},
+		addGoods (item) {
+			this.$store.commit('ADD_COUNT', item);
 		}
 	}
 }

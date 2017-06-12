@@ -17,9 +17,9 @@
 						<p>{{item.CategoryName}}</p>
 						<p>{{item.Description}}</p>
 					</div>
-					<span class="category_item_more" :class="{rotates:index == indexx}"></span>
+					<span class="category_item_more" :class="{rotates: item.isopen}"></span>
 				</div>
-				<div class="category_item_wrap" v-show="isShow == index">
+				<div class="category_item_wrap" v-show="item.isopen">
 					<a>全部</a><a @click = "rotate(items)" v-for="items in item.Childs">{{items.CategoryName}}</a>
 				</div>
 			</li>
@@ -33,30 +33,28 @@ export default{
 	name: 'cartgory',
 	data(){
 		return {
-			data: [],
-			isShow: 100,
-			indexx: 100,
-			flag: 100
+			data: []
 		}
 	},
 	
 	created () {
 		this.axios.get('../../../static/data/categoryData.json').then(res => {
+			res.data.RspData.data.map(function (item) {
+				item.isopen = false;
+			});
 			this.data = res.data.RspData.data;
-			// console.log(res.data);
+
 		})
 	},
 	methods: {
 		switchs (index) {
-			// console.log(index);
-			if (this.flag==100) {
-				this.isShow = index;
-				this.indexx = index;
-				this.flag = !100;
-			}else if(this.flag!=100){
-				this.isShow = 100;
-				this.indexx = 100;
-				this.flag = 100;
+			if (this.data[index].isopen == true) {
+				this.data[index].isopen = false;
+			}else{
+				this.data.map(function (items) {
+					items.isopen = false;
+				});
+				this.data[index].isopen = true;
 			}
 		},
 		rotate(item){
@@ -220,6 +218,7 @@ export default{
 }
 .category_item_wrap a{
 	display: inline-block;
+	vertical-align: top;
 	/*float: left;*/
     width: 33.3%;
     padding: .07rem .15rem .07rem .14rem;
