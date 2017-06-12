@@ -25,22 +25,24 @@
         </div>
         <!--主内容部分-->
         <ul class="title open-article clearFloat" id="rptIndexArt_baaaefd5-e84c-4712-967c-a77030fe4e22" rownum="1" pageindex="1">
-            <li class="title-in clearFloat" v-for="(item,key) in dataEatFoot">
-                <div class="img-box">
-                    <span class="txt food">{{item.OtherCategoryName}}</span>
-                    <span class="num"><i class="icon icon5"></i>{{item.InitReadNum}}</span>
-                    <img class="lazy" :src="item.PictureUrl" alt="{EfruitArticleTitle}" style="display: block;">
-                </div>
-                <p class="tit1">
-                    {{item.EfruitArticleTitle}}
-                </p>
-                <p class="tit2">{{item.EfruitArticleSummary}}</p>
-                <div class="time">
-                    <img class="lazy  img-circle img-responsive" :src="item.AuthorPicture" alt="{item.Author}" style="display: block;">
-                    <span class="name">{{item.Author}}&nbsp;</span>
-                    <span class="time-new">{{item.PublishedTimed}}</span>
-                </div>                   
-            </li>
+            <a href="http://article.m.yiguo.com/Article/Detail/?ArticleId=baaaefd5-e84c-4712-967c-a77030fe4e22&isopenhwa=1">
+                <li class="title-in clearFloat" v-for="(item,key) in dataEatFoot">
+                    <div class="img-box">
+                        <span class="txt food">{{item.OtherCategoryName}}</span>
+                        <span class="num"><i class="icon icon5"></i>{{item.InitReadNum}}</span>
+                        <img class="lazy" :src="item.PictureUrl" alt="{EfruitArticleTitle}" style="display: block;">
+                    </div>
+                    <p class="tit1">
+                        {{item.EfruitArticleTitle}}
+                    </p>
+                    <p class="tit2">{{item.EfruitArticleSummary}}</p>
+                    <div class="time">
+                        <img class="lazy  img-circle img-responsive" :src="item.AuthorPicture" alt="{item.Author}" style="display: block;">
+                        <span class="name">{{item.Author}}&nbsp;</span>
+                        <span class="time-new">{{item.PublishedTimed}}</span>
+                    </div>                   
+                </li>
+            </a>
         </ul>
 	</div>
 </template>
