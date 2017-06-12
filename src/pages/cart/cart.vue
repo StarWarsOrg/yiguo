@@ -4,7 +4,7 @@
 			<p>全场满100元包邮，还差<span>100.00</span>元包邮</p>
 		</div>
 		<div class="cart_zhuru" v-for="item in getArr" >
-			<img :src="item.SmallPic" class="cart_one" @click="push(item.CommodityCode)"/>
+			<img :src="item.SmallPic" class="cart_one" @click="push(item)"/>
 			<div class="cart_p">
 				<p class="cart_p1">{{ item.CommodityName}}</p>
 				<p class="cart_p3"></p>
