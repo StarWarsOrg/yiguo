@@ -14,11 +14,11 @@
 			<p class="cart_introduceP1">{{ data.CommodityName }}</p>
 			<p class="cart_introduceP2" >{{ total }}</p>
 			<div class="cart_jiajie2">
-				<!--<ul>
-					<li @click="jian()">-</li>
-					<li>{{ data.count }}</li>
+				<ul>
+					<li @click="jian(getArr)">-</li>
+					<li>{{ getArr.count || 0}}</li>
 					<li @click="jia(getArr)">+</li>
-				</ul>-->
+				</ul>
 			</div>
 		</div>
 		<!--规格-->
@@ -51,7 +51,9 @@
 				<img src="http://img05.yiguoimg.com/e/web/161227/00585/180433/shopping-cart.png"/>
 				</router-link>
 			</p>
-			<p>加入购物车</p>
+			<router-link to="/cart" tag="p">加入购物车
+			
+			</router-link>
 		</div>
 	</div>
 		
@@ -78,13 +80,11 @@
 		
 		jia(item){
 			//第一个参数找到vuejs对应触发的事件名。第二个是传送的对象
-			console.log(item)
-//			this.$store.commit("ADD_COUNT", item);
-//			console.log(this.$store.state.arr);
-//			this.count = item;
+			this.$store.commit("ADD_COUNT", item);
+//this.count = item;
 		},
 		jian(item){
-			if (this.$store.state.arr[0].count <= 1) {
+			if (this.$store.state.obj.count <=1 ) {
 				
 			}else {
 				this.$store.commit('REDUCE_COUNT',item)
@@ -92,23 +92,20 @@
 		}
 	},
 		//创建完成后
-		created(){
-//			console.log(this.id)
-			this.axios.get('../../../static/data/xiangqing.json').then(res => {
-				res.data.RspData.data.count = 1;
-				this.data = res.data.RspData.data;
-//				console.log(this.data)
-	//			let date = res;
-			})
-		},
 		computed:{
 			total(){
 				let res = this.data.CommodityPrice || 0;
 				return res.toFixed(2);
 			},
 			getArr(){
-				return this.$store.state.arr;
+				return this.$store.state.obj;
 			}	
+		},
+		created(){
+			this.axios.get('../../../static/data/xiangqing.json').then(res => {
+				res.data.RspData.data.count = 1;
+				this.data = res.data.RspData.data;
+			})
 		}
 	}
 </script>
