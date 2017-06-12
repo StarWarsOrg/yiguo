@@ -28,7 +28,7 @@ const routes = [
 	{path: '/mine', component: Mine},
 	{path: '/category_2/:id', component: Category_category},
 	{path: '/detail', component: Detail},
-	{path: '/minegwq', component: Minegwq}
+	{path: '/minegwq', component: Minegwq},
 	{path: '/eatfoot', component: EatFoot}
 ]
 

@@ -76,7 +76,7 @@ export default{
 		jia(item){
 			//第一个参数找到vuejs对应触发的事件名。第二个是传送的对象
 			this.$store.commit("ADD_COUNT", item);
-			console.log(this.$store.state.arr);
+//			console.log(this.$store.state.arr);
 //			this.count = item;
 		},
 		jian(item){

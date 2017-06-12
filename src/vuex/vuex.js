@@ -32,7 +32,7 @@ export default new Vuex.Store({
 			}
 		},
 		ADD_OBJ(state,item){
-			console.log(123);
+//			console.log(123);
 			state.obj = item;
 		},
 		
