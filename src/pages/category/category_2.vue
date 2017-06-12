@@ -8,7 +8,7 @@
 		<div class="list_of_goods">
 			<ul>
 				<li class="commodity" v-for = "item in data">
-					<div @click = "rotates(item.CommodityCode)">
+					<div @click = "rotates(item)">
 						<div class="picture">
 							<img :src="item.SmallPic" alt="">
 						</div>
@@ -50,6 +50,7 @@ export default{
 			this.indexx = index;
 		},
 		rotates(item){
+			this.$store.commit("ADD_OBJ", item);
 			this.$router.push({
 				path:'/detail?' + item,
 			})

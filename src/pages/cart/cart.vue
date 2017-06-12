@@ -3,8 +3,8 @@
 		<div class="cart_head">
 			<p>全场满100元包邮，还差<span>100.00</span>元包邮</p>
 		</div>
-		<div class="cart_zhuru" v-for="item in getArr">
-			<img :src="item.SmallPic" class="cart_one"/>
+		<div class="cart_zhuru" v-for="item in getArr" >
+			<img :src="item.SmallPic" class="cart_one" @click="push(item.CommodityCode)"/>
 			<div class="cart_p">
 				<p class="cart_p1">{{ item.CommodityName}}</p>
 				<p class="cart_p3"></p>
@@ -17,7 +17,7 @@
 					<li @click="jia(item)">+</li>
 				</ul>
 			</div>
-			<img src="../../../static/img/cart/del.png" class="cart_tow"/>
+			<!--<img src="../../../static/img/cart/del.png" class="cart_tow"/>-->
 		</div>
 		
 		<!--猜你喜欢-->
@@ -25,11 +25,11 @@
 			<div class="cartPush_haed">
 				<p>——.猜你喜欢.——</p>
 			</div>
-			<div class="cartPush_lists"  >
+			<div class="cartPush_lists">
 				
 				<div class="cartPush_list" v-for="datas in data" >
 					<!--<router-link to="/cart1">-->
-				<img :src="datas.SmallPic" class="cartPush_img1"@click="push(datas.CommodityCode)"/>
+				<img :src="datas.SmallPic" class="cartPush_img1"@click="push(datas)" />
 					<div class="cartPush_character">
 						<p class="cartPush_p1" >{{ datas.CommodityName }}</p>
 						<p class="cartPush_p2">{{ datas.CommodityPrice }}</p>
@@ -48,7 +48,7 @@ export default{
 	data(){
 		return {
 			data: [],
-//			getItem:[]
+
 		
 		}
 	},
@@ -56,22 +56,27 @@ export default{
 	created () {
 		this.axios.get('../../../static/data/cartData.json').then(res => {			
 			this.data = res.data.RspData.GuessYouLikeCommoditys;
-			console.log(this.data);
 		})
 	},
 	methods: {
-		push(code){
+		push(item){
+			this.$store.commit("ADD_OBJ", item);
 			this.$router.push({
-				path:'/detail?' + code,
+				path:'/detail?'
 //				query:{
 //					id:code
+//				}
+//				jia(item);
+//				name:'obj',
+//				parmas:{
+//					id:item.code
 //				}
 			})
 		},
 		jia(item){
 			//第一个参数找到vuejs对应触发的事件名。第二个是传送的对象
 			this.$store.commit("ADD_COUNT", item);
-			console.log(this.$store.state.arr);
+//			console.log(this.$store.state.arr);
 //			this.count = item;
 		},
 		jian(item){
