@@ -19,19 +19,20 @@ import Minegwq from '../mine/minegwq'
 
 //定义路由规则
 const routes = [
-	{path: '', component: Home},
+	{path: '', redirect: 'home'},
 	{path: '/home', component: Home},
 	{path: '/citylist', component: CityList},
 	{path: '/category', component: Category},
 	{path: '/eat', component: Eat},
 	{path: '/cart', component: Cart},
 	{path: '/mine', component: Mine},
-	{path: '/category_2/:id', component: Category_category},
+	{path: '/category/productslist/:id', component: Category_category},
 	{path: '/detail', component: Detail},
-	{path: '/minegwq', component: Minegwq},
-	{path: '/eatfoot', component: EatFoot}
+	{path: '/mine/minegwq', component: Minegwq},
+	{path: '/eat/:id', component: EatFoot}
 ]
 
 export default new VueRouter({
+	mode:'history',
 	routes
 })
