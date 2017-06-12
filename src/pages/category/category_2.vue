@@ -31,7 +31,7 @@ export default{
 	data(){
 		return {
 			data: [],
-			id:this.$route.params.id,
+			id:this.$route.params.id,//参数名来接受传递过来的值 
 			data2: [
 				{name: '默认'},
 				{name: '价格'},
