@@ -3,7 +3,7 @@
 		<!--轮播图-->
 		<div class="slideshow">
 			<swiper :options="swiperOption" ref="mySwiper" class="swipers">
-				<swiper-slide v-for="(item,index) in data.Pictures">
+				<swiper-slide v-for="(item,index) in data.Pictures" :key="item.id">
 					<img :src="data.Pictures[index]">
 				</swiper-slide>
 				<div class="swiper-pagination" slot="pagination"></div>
@@ -14,12 +14,12 @@
 			<p class="cart_introduceP1">{{ data.CommodityName }}</p>
 			<p class="cart_introduceP2" >{{ total }}</p>
 			<div class="cart_jiajie2">
-			<ul>
-				<li>-</li>
-				<li>1</li>
-				<li>+</li>
-			</ul>
-		</div>
+				<!--<ul>
+					<li @click="jian()">-</li>
+					<li>{{ data.count }}</li>
+					<li @click="jia(getArr)">+</li>
+				</ul>-->
+			</div>
 		</div>
 		<!--规格-->
 		<div class="standard">
@@ -49,7 +49,7 @@
 			<p>购物车
 				<router-link to="/cart">
 				<img src="http://img05.yiguoimg.com/e/web/161227/00585/180433/shopping-cart.png"/>
-				</router-link">
+				</router-link>
 			</p>
 			<p>加入购物车</p>
 		</div>
@@ -66,30 +66,49 @@
 				data:[],
 //				params
 				swiperOption: {
-				observer: false,
-//				nextButton: '.swiper-button-next',
-//				prevButton: '.swiper-button-prev',
-				// 如果需要分页器
-				pagination: '.swiper-pagination'
-			}
+					observer: false,
+					loop: true,
+					// 分页器
+					pagination: '.swiper-pagination'
+				}
 			}
 		},
+		
+		methods: {
+		
+		jia(item){
+			//第一个参数找到vuejs对应触发的事件名。第二个是传送的对象
+			console.log(item)
+//			this.$store.commit("ADD_COUNT", item);
+//			console.log(this.$store.state.arr);
+//			this.count = item;
+		},
+		jian(item){
+			if (this.$store.state.arr[0].count <= 1) {
+				
+			}else {
+				this.$store.commit('REDUCE_COUNT',item)
+			}
+		}
+	},
 		//创建完成后
 		created(){
 //			console.log(this.id)
-			this.axios.get('../../../static/data/xiangqing.json').then(res => {			
+			this.axios.get('../../../static/data/xiangqing.json').then(res => {
+				res.data.RspData.data.count = 1;
 				this.data = res.data.RspData.data;
+//				console.log(this.data)
 	//			let date = res;
-				
-				console.log(res.data.RspData.data.Pictures);
 			})
 		},
 		computed:{
 			total(){
 				let res = this.data.CommodityPrice || 0;
 				return res.toFixed(2);
-			}
-			
+			},
+			getArr(){
+				return this.$store.state.arr;
+			}	
 		}
 	}
 </script>
