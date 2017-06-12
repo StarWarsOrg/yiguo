@@ -29,7 +29,7 @@ const routes = [
 	{path: '/category_2/:id', component: Category_category},
 	{path: '/detail', component: Detail},
 	{path: '/minegwq', component: Minegwq},
-	{path: '/eatfoot/id', component: EatFoot}
+	{path: '/eatfoot/:id', component: EatFoot}
 ]
 
 export default new VueRouter({
