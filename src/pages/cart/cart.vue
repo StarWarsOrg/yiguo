@@ -210,15 +210,21 @@ export default{
 	font-size:.12rem;
 	width:1.2783rem;
 	height:.2884rem;
+	line-height: .1442rem;
 	line-height:.14rem;
 	text-align:left;
 	overflow:hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
 }
 .cartPush_p2{
 	color:red;
 	width:1.2783rem;
 	height:.2061rem;
 	text-align:left;
+	overflow : hidden;
 	line-height:.2061rem;
 }		
 </style>

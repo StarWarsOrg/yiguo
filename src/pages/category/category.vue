@@ -116,7 +116,7 @@ export default{
     width: .43rem;
     height: .45rem;
     line-height: .45rem;
-    padding-right: .15rem;
+    /*padding-right: .15rem;*/
     color: #008842;
     font-size: .14rem;
     position: absolute;
