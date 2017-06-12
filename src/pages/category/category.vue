@@ -58,7 +58,7 @@ export default{
 			}
 		},
 		rotate(item){
-			this.$router.push('/category_2/'+item.CategoryCode);
+			this.$router.push('/category/productslist/'+item.CategoryCode);
 		},
 	}
 }

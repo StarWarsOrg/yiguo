@@ -38,7 +38,7 @@ export default{
     },
     methods: {
         minegwq (id) {
-            this.$router.push('minegwq/');
+            this.$router.push('/mine/minegwq/');
         }
     }
 }

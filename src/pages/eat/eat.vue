@@ -79,7 +79,7 @@ export default{
     methods: {
         eatfoot(index){
             // console.log(index);
-            this.$router.push('eatfoot/'+this.arrs[index]);
+            this.$router.push('eat/'+this.arrs[index]);
         }
     }
 }

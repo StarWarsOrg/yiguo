@@ -26,12 +26,13 @@ const routes = [
 	{path: '/eat', component: Eat},
 	{path: '/cart', component: Cart},
 	{path: '/mine', component: Mine},
-	{path: '/category_2/:id', component: Category_category},
+	{path: '/category/productslist/:id', component: Category_category},
 	{path: '/detail', component: Detail},
-	{path: '/minegwq', component: Minegwq},
-	{path: '/eatfoot/:id', component: EatFoot}
+	{path: '/mine/minegwq', component: Minegwq},
+	{path: '/eat/:id', component: EatFoot}
 ]
 
 export default new VueRouter({
+	mode:'history',
 	routes
 })
